@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
-  ScrollView,
   StatusBar,
+  Dimensions
 } from 'react-native';
 import { observer } from 'mobx-react/native';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import HomeStore from './HomeStore';
-import UserAppPage from './pages/UserAppPage';
-import SystemAppPage from './pages/SystemAppPage';
-import AllAppPage from './pages/AllAppPage';
-import color from '../../resource/color';
+import AppPage from './pages/AppPage';
+import Color from '../../resource/color';
+import Constants from '../../resource/constants'
 
 @observer
 export default class Home extends Component {
@@ -30,15 +28,17 @@ export default class Home extends Component {
         <TabView
           navigationState={this.stateStore.tabState}
           renderScene={SceneMap({
-            userApp: () => <UserAppPage/>,
-            systemApp: () => <SystemAppPage/>,
-            allApp: () => <AllAppPage/>,
+            userApp: () => <AppPage type={Constants.USER_APP}/>,
+            systemApp: () => <AppPage type={Constants.SYSTEM_APP}/>,
+            allApp: () => <AppPage type={Constants.ALL_APP}/>,
           })}
+          initialLayout={{ height: 0, width: Dimensions.get('window').width }}
           onIndexChange={index => this.stateStore.changeIndex(index)}
           renderTabBar={props => <TabBar
             {...props}
-            style={{ backgroundColor: color.cyan, paddingTop: StatusBar.currentHeight }}
-            indicatorStyle={{ backgroundColor: color.white }}
+            onTabPress={({route}) => this.stateStore.goPage(route) }
+            style={{ backgroundColor: Color.cyan, paddingTop: StatusBar.currentHeight }}
+            indicatorStyle={{ backgroundColor: Color.white }}
           />}
         />
       </View>

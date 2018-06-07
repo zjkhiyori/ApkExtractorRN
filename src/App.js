@@ -8,9 +8,7 @@ import AppNavigator from './navigator/AppNavigator';
 
 const isAndroid = Platform.OS === 'android';
 
-alert = (...args) => {
-    Alert.alert(...args);
-};
+alert = (...args) => Alert.alert(...args);
 
 export default class App extends Component {
   constructor(props) {
@@ -29,13 +27,7 @@ export default class App extends Component {
     return (
       <AppNavigator
         ref={(nav) => {
-          this.navigator = nav;
           global.NAVIGATOR = nav;
-        }}
-        screenProps={{
-          headerStyle: {
-            backgroundColor: '#00a2ff',
-          },
         }}
         onNavigationStateChange={(prevState, currentState) => {
           global.CURRENT_ROUTE_NAME = currentState.routes[currentState.index].routeName;
