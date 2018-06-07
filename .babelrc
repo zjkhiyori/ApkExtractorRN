@@ -1,6 +1,7 @@
 {
   "presets": ["react-native"],
   "plugins": [
-    "transform-remove-console"
+    "transform-decorators-legacy"
+//    "transform-remove-console"
   ]
 }
