@@ -16,6 +16,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    //设置沉浸式
     StatusBar.setBarStyle('light-content');
     if (isAndroid) {
       StatusBar.setTranslucent(true);
