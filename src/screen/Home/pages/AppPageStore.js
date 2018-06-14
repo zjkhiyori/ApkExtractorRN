@@ -8,28 +8,34 @@ export default class UserAppPageStore {
 
   @action
   async getUserAppsInfo() {
-    try {
-      this.itemSource  = await ApkExtractorModule.getUserApp();
-    } catch (error) {
-      alert('Error!', error.message);
+    if(this.itemSource.length === 0) {
+      try {
+        this.itemSource = await ApkExtractorModule.getUserApp();
+      } catch (error) {
+        alert('Error!', error.message);
+      }
     }
   }
 
   @action
   async getSystemAppsInfo() {
-    try {
-      this.itemSource  = await ApkExtractorModule.getSystemApp();
-    } catch (error) {
-      alert('Error!', error.message);
+    if(this.itemSource.length === 0) {
+      try {
+        this.itemSource = await ApkExtractorModule.getSystemApp();
+      } catch (error) {
+        alert('Error!', error.message);
+      }
     }
   }
 
   @action
   async getAllAppsInfo() {
-    try {
-      this.itemSource  = await ApkExtractorModule.getAllApp();
-    } catch (error) {
-      alert('Error!', error.message);
+    if(this.itemSource.length === 0) {
+      try {
+        this.itemSource = await ApkExtractorModule.getAllApp();
+      } catch (error) {
+        alert('Error!', error.message);
+      }
     }
   }
 }

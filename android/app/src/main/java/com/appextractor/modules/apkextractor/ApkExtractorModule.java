@@ -89,8 +89,8 @@ public class ApkExtractorModule extends ReactContextBaseJavaModule {
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(  0,   0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         drawable.draw(canvas);
-        ByteArrayOutputStream bos=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,  100, bos);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,  100, bos);
         byte[] bytes=bos.toByteArray();
         return Base64.encodeToString(bytes, Base64.DEFAULT);
     }

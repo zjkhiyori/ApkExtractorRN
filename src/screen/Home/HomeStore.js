@@ -12,7 +12,9 @@ export default class HomeStore {
 
   @action
   changeIndex(index) {
-    // this.tabState = Object.assign({}, this.tabState, {index});
+    console.log('---------indexChange----------');
+    console.log(index);
+    this.tabState = Object.assign({}, this.tabState, {index});
   }
 
   @action
