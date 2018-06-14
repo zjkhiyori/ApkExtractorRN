@@ -41,8 +41,7 @@ export default class Loading extends Component {
       >
         <View
           style={{
-            zIndex: 1000,
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            backgroundColor: '#00000080',
             justifyContent: 'center',
             alignItems: 'center',
             flex: 1,
@@ -50,7 +49,7 @@ export default class Loading extends Component {
         >
           <View
             style={{
-              width: Dimensions.get('window').width - 50,
+              width: Dimensions.get('window').width - 100,
               paddingVertical: 30,
               backgroundColor: '#ffffff',
               borderRadius: 5,

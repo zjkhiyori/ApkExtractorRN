@@ -12,7 +12,7 @@ import { observer } from 'mobx-react/native';
 import AppPageStore from './AppPageStore';
 import Constant from '../../../resource/constants';
 import Color from '../../../resource/color';
-import { Loading } from '../../component';
+import { Loading } from '../../../component';
 
 const styles = StyleSheet.create({
   container: {
@@ -86,7 +86,7 @@ export default class AppPage extends Component {
           data={this.stateStore.itemSource}
           renderItem={({item}) => <Item
             item={item}
-            onPress={() => alert('是否备份该应用', `${item.appName}\n${item.appPackageName}`, [{
+            onPress={() => alert('是否备份该应用？', `${item.appName}\n${item.appPackageName}`, [{
               text: '取消'
             }, {
               text: '确认',
@@ -94,7 +94,7 @@ export default class AppPage extends Component {
                 this.loader.show();
                 setTimeout(() => {
                   this.loader.dismiss();
-                }, 3000)
+                }, 1000)
               }
             }])}/>
           }

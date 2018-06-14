@@ -103,9 +103,8 @@ android {
         applicationId "com.apkextractorrn"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 1
-        versionName "0.0.1"
-        archivesBaseName = "ApkExtractorRN-$versionName"
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -147,6 +146,20 @@ android {
             }
         }
     }
+}
+
+task buildRelease(type: Copy) {
+    from('build/outputs/apk/release', 'build/outputs/apk/debug')
+    into('../../dist/v' + VERSION_NAME + '/android/')
+    include('*.apk')
+    rename { String fileName ->
+        fileName.replace("app", "apkextractor-rn-" + VERSION_NAME)
+    }
+}
+
+afterEvaluate {
+    assembleRelease.dependsOn clean
+    buildRelease.dependsOn assembleRelease
 }
 
 dependencies {
