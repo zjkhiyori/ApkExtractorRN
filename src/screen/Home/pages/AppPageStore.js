@@ -38,4 +38,10 @@ export default class UserAppPageStore {
       }
     }
   }
+
+  @action
+  async copyApp(packageName, appName, packageType) {
+    const filePath = await ApkExtractorModule.copyApp(packageName, appName, packageType);
+    return filePath;
+  }
 }

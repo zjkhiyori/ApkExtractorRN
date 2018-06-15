@@ -7,13 +7,15 @@ import {
   Image,
   ActivityIndicator,
   TouchableNativeFeedback,
+  ToastAndroid,
+  NativeModules,
 } from 'react-native';
 import { observer } from 'mobx-react/native';
 import AppPageStore from './AppPageStore';
 import Constant from '../../../resource/constants';
 import Color from '../../../resource/color';
-import { Loading } from '../../../component';
 
+const { ApkExtractorModule } = NativeModules;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -29,7 +31,9 @@ class Item extends PureComponent {
     const item = this.props.item;
     return (
       <TouchableNativeFeedback
-        onPress={this.props.onPress}
+        onPress={() => {
+          this.props.onPress(item.appPackageName, item.appName)
+        }}
       >
         <View style={{ flexDirection: 'row', padding: 5 }}>
           <Image
@@ -90,23 +94,23 @@ export default class AppPage extends Component {
               text: '取消'
             }, {
               text: '确认',
-              onPress: () => {
-                this.loader.show();
-                setTimeout(() => {
-                  this.loader.dismiss();
-                }, 1000)
+              onPress: async () => {
+                const filePath = await this.stateStore.copyApp(item.appPackageName, item.appName, this.props.type);
+                ApkExtractorModule.showSnackbar(`已备份至${filePath}`, '分享', () => {
+                  ApkExtractorModule.share(filePath, '分享给你的好盆♂友');
+                });
               }
             }])}/>
           }
           initialNumToRender={20}
           keyExtractor={(item) => `${item.appPackageName}`}
         />
-        <Loading
-          ref={(component) => {
-            this.loader = component;
-          }}
-          message={'正在备份'}
-        />
+        {/*<Loading*/}
+          {/*ref={(component) => {*/}
+            {/*this.loader = component;*/}
+          {/*}}*/}
+          {/*message={'正在备份'}*/}
+        {/*/>*/}
       </View>
     );
   }
