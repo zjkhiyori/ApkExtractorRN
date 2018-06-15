@@ -85,7 +85,7 @@ public class ApkExtractorModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void copyApp(String packageName, String appName, int packageType, Promise promise) {
+    public void copyApp(String packageName, final String appName, int packageType, final Promise promise) {
         PackageInfo packageInfo = null;
         switch (packageType) {
             case 0: {
@@ -111,7 +111,13 @@ public class ApkExtractorModule extends ReactContextBaseJavaModule {
             promise.reject("packageInfo not found");
             return;
         }
-        doCopy(packageInfo, appName, promise);
+        final PackageInfo finalPackageInfo = packageInfo;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                doCopy(finalPackageInfo, appName, promise);
+            }
+        }).start();
     }
 
     @ReactMethod

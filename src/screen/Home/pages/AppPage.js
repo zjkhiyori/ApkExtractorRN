@@ -7,7 +7,6 @@ import {
   Image,
   ActivityIndicator,
   TouchableNativeFeedback,
-  ToastAndroid,
   NativeModules,
 } from 'react-native';
 import { observer } from 'mobx-react/native';
@@ -97,7 +96,7 @@ export default class AppPage extends Component {
               onPress: async () => {
                 const filePath = await this.stateStore.copyApp(item.appPackageName, item.appName, this.props.type);
                 ApkExtractorModule.showSnackbar(`已备份至${filePath}`, '分享', () => {
-                  ApkExtractorModule.share(filePath, '分享给你的好盆♂友');
+                  ApkExtractorModule.share(filePath, '分享给你的好基♂友');
                 });
               }
             }])}/>

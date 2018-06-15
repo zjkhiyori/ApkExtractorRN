@@ -1,7 +1,13 @@
 {
   "presets": ["react-native"],
   "plugins": [
-    "transform-decorators-legacy"
-//    "transform-remove-console"
-  ]
+    "transform-decorators-legacy",
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-remove-console"
+      ]
+    }
+  }
 }
