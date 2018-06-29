@@ -1,11 +1,17 @@
 {
   "name": "AppExtractor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zjkhiyori/ApkExtractorRN.git"
+  },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
+  "author": "Yori Zhao <zjkhiyori@gmail.com>",
   "dependencies": {
     "react": "16.2.0",
     "react-native": "0.55.4",
