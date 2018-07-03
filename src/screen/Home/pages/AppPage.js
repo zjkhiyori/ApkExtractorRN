@@ -99,7 +99,8 @@ export default class AppPage extends Component {
                 ApkExtractorModule.showSnackbar(
                   `${Lang.get('appPage.snackbarTitle')}${filePath}`,
                   Lang.get('appPage.snackbarAction'),
-                  () => ApkExtractorModule.share(filePath, Lang.get('appPage.shareTitle')));
+                  () => ApkExtractorModule.share(filePath, Lang.get('appPage.shareTitle'))
+                );
               }
             }])}/>
           }
