@@ -1,4 +1,4 @@
-package com.apkextractor.modules.apkextractor;
+package com.yori.apkextractor.modules.apkextractor;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;

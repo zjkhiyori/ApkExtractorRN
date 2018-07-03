@@ -1,4 +1,4 @@
-package com.apkextractor;
+package com.yori.apkextractor;
 
 import com.facebook.react.ReactActivity;
 

@@ -1,6 +1,6 @@
-package com.apkextractor.modules;
+package com.yori.apkextractor.modules;
 
-import com.apkextractor.modules.apkextractor.ApkExtractorModule;
+import com.yori.apkextractor.modules.apkextractor.ApkExtractorModule;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;

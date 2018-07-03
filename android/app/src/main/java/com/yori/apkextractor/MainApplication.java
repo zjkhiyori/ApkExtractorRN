@@ -1,8 +1,8 @@
-package com.apkextractor;
+package com.yori.apkextractor;
 
 import android.app.Application;
 
-import com.apkextractor.modules.MainPackage;
+import com.yori.apkextractor.modules.MainPackage;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
