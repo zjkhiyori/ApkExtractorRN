@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.util.Base64;
 import android.view.View;
@@ -31,7 +32,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.annotation.Nullable;
 
 public class ApkExtractorModule extends ReactContextBaseJavaModule {
     private PackageManager packageManager;
@@ -51,6 +57,29 @@ public class ApkExtractorModule extends ReactContextBaseJavaModule {
     @Override
     public String getName() {
         return "ApkExtractorModule";
+    }
+
+    @Nullable
+    @Override
+    public Map<String, Object> getConstants() {
+        HashMap<String, Object> constants = new HashMap<>();
+        constants.put("deviceLocale", getLocale());
+        return constants;
+    }
+
+    private String getLocale() {
+        Locale current = getReactApplicationContext().getResources().getConfiguration().locale;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return current.toLanguageTag();
+        } else {
+            StringBuilder builder = new StringBuilder();
+            builder.append(current.getLanguage());
+            if (current.getCountry() != null) {
+                builder.append("-");
+                builder.append(current.getCountry());
+            }
+            return builder.toString();
+        }
     }
 
     @ReactMethod

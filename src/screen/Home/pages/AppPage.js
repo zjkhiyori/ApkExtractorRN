@@ -13,6 +13,7 @@ import { observer } from 'mobx-react/native';
 import AppPageStore from './AppPageStore';
 import Constant from '../../../resource/constants';
 import Color from '../../../resource/color';
+import Lang from '../../../utils/Lang';
 
 const { ApkExtractorModule } = NativeModules;
 const styles = StyleSheet.create({
@@ -89,15 +90,16 @@ export default class AppPage extends Component {
           data={this.stateStore.itemSource}
           renderItem={({item}) => <Item
             item={item}
-            onPress={() => alert('是否备份该应用？', `${item.appName}\n${item.appPackageName}`, [{
-              text: '取消'
+            onPress={() => alert(Lang.get('appPage.dialogTitle'), `${item.appName}\n${item.appPackageName}`, [{
+              text: Lang.get('appPage.dialogNegativeBtn')
             }, {
-              text: '确认',
+              text: Lang.get('appPage.dialogPositiveBtn'),
               onPress: async () => {
                 const filePath = await this.stateStore.copyApp(item.appPackageName, item.appName, this.props.type);
-                ApkExtractorModule.showSnackbar(`已备份至${filePath}`, '分享', () => {
-                  ApkExtractorModule.share(filePath, '分享给你的好基♂友');
-                });
+                ApkExtractorModule.showSnackbar(
+                  `${Lang.get('appPage.snackbarTitle')}${filePath}`,
+                  Lang.get('appPage.snackbarAction'),
+                  () => ApkExtractorModule.share(filePath, Lang.get('appPage.shareTitle')));
               }
             }])}/>
           }
