@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1017913731902",
+    "firebase_url": "https://apkextractor-2a6fc.firebaseio.com",
+    "project_id": "apkextractor-2a6fc",
+    "storage_bucket": "apkextractor-2a6fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017913731902:android:0e66b41a31474440",
+        "android_client_info": {
+          "package_name": "com.yori.apkextractor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017913731902-mi8621ju85odgas18kmp1ib9g89mkdh7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCL0Xg6G-TJANvW_tmcrmgrwq3T3Ma8Zrs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
