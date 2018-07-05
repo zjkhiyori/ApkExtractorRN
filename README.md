@@ -16,6 +16,7 @@ cd ApkExtractorRN/
 yarn
 cd android/
 ./gradlew buildRelease
+cd ..
 adb install dist/vx.x.x/android/x.apk
 ```
 Enjoy yourself :)
