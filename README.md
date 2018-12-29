@@ -12,11 +12,11 @@ Dependencies：[react-native-tab-view](https://github.com/react-native-community
 * Android environment
 ### Installation
 
-For User 
+#### For User 
 
 Please download the lastest release
 
-For developer
+#### For developer
 ```
 cd ApkExtractorRN/
 yarn
